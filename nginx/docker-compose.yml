@@ -1,0 +1,53 @@
+version: "3"
+
+services:
+  web:
+    image: nginx_revproxy:latest
+    build: .
+    ports:
+      - "80:80"
+    volumes:
+      - ./http.conf:/etc/nginx/nginx.conf:ro
+      - nginx_logs:/var/log/nginx
+    container_name: nginx_revproxy
+    networks:
+      - revproxy
+      - web1_internal
+      - web2_internal
+      - web3_internal
+      - web4_internal
+      - web5_internal
+      - web6_internal
+      - web7_internal
+      - dev4_internal
+
+networks:
+  revproxy:
+    name: revproxy
+  web1_internal:
+    internal: true
+    name: web1_internal
+  web2_internal:
+    internal: true
+    name: web2_internal
+  web3_internal:
+    internal: true
+    name: web3_internal
+  web4_internal:
+    internal: true
+    name: web4_internal
+  web5_internal:
+    internal: true
+    name: web5_internal
+  web6_internal:
+    internal: true
+    name: web6_internal
+  web7_internal:
+    internal: true
+    name: web7_internal
+  dev4_internal:
+    internal: true
+    name: dev4_internal
+
+volumes:
+  nginx_logs:

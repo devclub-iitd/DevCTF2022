@@ -1,0 +1,14 @@
+<html>
+  <head> </head>
+  <body style="text-align: center">
+    <h1>Are you human? Prove it within 3 seconds</h1>
+    <h3 style="color: red">{{msg}}</h3>
+    <form action="./" method="post">
+      <!-- <img src="{{ url_for('static', filename=graph) }}" />-->
+      <img src="data:image/jpeg;base64, {{ img_data }}" /><br /><br />
+      <input type="hidden" value="{{id}}" id="tt" name="tt" required />
+      <input type="text" id="login" name="captcha" required /><br />
+      <input type="submit" value="Submit" />
+    </form>
+  </body>
+</html>

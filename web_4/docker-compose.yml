@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+  web:
+    image: web4-uwsgi-nginx-flask:python3.10
+    build: .
+    networks:
+      - default
+    container_name: web_4
+    # ports:
+    #   - "8004:80"
+    volumes:
+      - ./app:/app:ro
+
+networks:
+  default:
+    external:
+      name: web4_internal

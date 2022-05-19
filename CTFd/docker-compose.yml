@@ -1,0 +1,71 @@
+version: '2'
+
+services:
+  ctfd:
+    image: ctfd_python:3.9-slim-buster
+    build: .
+    user: root
+    restart: always
+    environment:
+      - DATABASE_URL=mysql+pymysql://${MYSQL_USER}:${MYSQL_ROOT_PASSWORD}@${MYSQL_DBURL}/${MYSQL_DATABASE}
+      - REDIS_URL=redis://cache:6379
+    env_file:
+      - ./.env
+    volumes:
+      - ctfd_logs:/var/log/CTFd
+      - ctfd_uploads:/var/uploads
+      - .:/opt/CTFd:ro
+    depends_on:
+      - db
+    networks:
+      default:
+      internal:
+
+  nginx:
+    image: ctfd_nginx:stable
+    build: ./conf/nginx
+    restart: always
+    volumes:
+      - ./conf/nginx/http.conf:/etc/nginx/nginx.conf:ro
+      - nginx_logs:/var/log/nginx
+    ports:
+      - 80:80
+    depends_on:
+      - ctfd
+    networks:
+      - default
+      - internal
+  db:
+    image: mariadb:10.4.12
+    restart: always
+    env_file:
+      - ./.env
+    volumes:
+      - sql_data:/var/lib/mysql
+    # This command is required to set important mariadb defaults
+    command: [mysqld, --character-set-server=utf8mb4, --collation-server=utf8mb4_unicode_ci, --wait_timeout=28800, --log-warnings=0]
+    networks:
+      internal:
+
+  cache:
+    image: redis:4
+    restart: always
+    volumes:
+    - redis_data:/data
+    networks:
+        internal:
+
+networks:
+    default:
+    internal:
+        internal: true
+
+
+volumes:
+  ctfd_logs:
+  ctfd_uploads:
+  redis_data:
+  nginx_logs:
+  sql_data:
+    name: db_sql_data
+    external: true

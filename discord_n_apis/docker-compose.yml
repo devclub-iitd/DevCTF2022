@@ -1,0 +1,11 @@
+version: "3"
+
+services:
+  bot:
+    image: ctfd_bot:latest
+    build: .
+    volumes:
+      - ./:/usr/src/bot/
+    env_file:
+      - ./.env
+    container_name: discord_bot

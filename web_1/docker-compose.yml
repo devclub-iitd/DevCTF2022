@@ -1,0 +1,25 @@
+version: "3"
+
+services:
+  web:
+    image: web1:lamp
+    build: .
+    networks:
+      - default
+    volumes:
+      - ./src:/app:ro
+      - mysql_data:/var/lib/mysql
+      - php_data:/var/www
+    container_name: web_1
+    env_file:
+      - .env
+    # ports:
+    #   - "80:80"
+
+volumes:
+  mysql_data:
+  php_data:
+networks:
+  default:
+    external:
+      name: web1_internal

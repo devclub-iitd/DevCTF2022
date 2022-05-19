@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+  web:
+    image: dev4-uwsgi-nginx-flask:python3.10
+    build: .
+    networks:
+      - default
+    container_name: dev_4
+    env_file:
+      - ./.env
+
+networks:
+  default:
+    external:
+      name: dev4_internal

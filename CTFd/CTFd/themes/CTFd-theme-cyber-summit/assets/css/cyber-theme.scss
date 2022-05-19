@@ -1,0 +1,97 @@
+@font-face {
+  font-family: "damase";
+  src: url("../../static/damase_v.2.ttf");
+}
+h1,
+h2 {
+  font-family: "damase";
+}
+
+body {
+  background-color: #0b1a24;
+  color: #fff;
+  .container {
+    font-family: "damase";
+  }
+  main {
+    font-family: "damase";
+    padding-top: 0;
+    .jumbotron {
+      background-image: url("../../static/img/banner.png");
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      padding: 7.5rem 2rem;
+      border-bottom: 5px solid #c0c0c0;
+      .container .heading {
+        text-transform: uppercase;
+        font-size: 70px;
+        font-weight: 600;
+        font-size: 70px;
+      }
+      .container h1 {
+        background: -webkit-linear-gradient(180deg, #e1cc6d, #895001);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      h3 {
+        background: -webkit-linear-gradient(180deg, #c0c0c0, #eee);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-size: 24px;
+      }
+      .action-btn {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+        margin-top: 4rem;
+        a {
+          font-size: 18px;
+          display: block;
+          color: #c9a94f;
+        }
+      }
+    }
+    .table {
+      color: #fff;
+    }
+    .form-control {
+      color: #fff;
+    }
+    .modal-dialog {
+      .modal-content {
+        background-color: #0b1a24;
+      }
+    }
+  }
+}
+
+.icons-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  align-items: center;
+  div a {
+    color: #c0c0c0;
+    font-size: 32px;
+  }
+}
+#navbar {
+  color: #fff;
+}
+.scolled-navbar {
+  background-image: url("../../static/img/banner.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.navbar-dark .navbar-nav .nav-link {
+  color: rgb(255, 255, 255);
+}
+.solved-challenge {
+  background-color: #4caf50 !important;
+  opacity: 1;
+  border: none;
+}

@@ -1,0 +1,20 @@
+version: "3"
+
+services:
+  web:
+    image: web6-uwsgi-nginx-flask:python3.10
+    build: .
+    networks:
+      - default
+    container_name: web_6
+    # ports:
+    #   - "8006:80"
+    volumes:
+      - ./app:/app:ro
+
+    
+
+networks:
+  default:
+    external:
+      name: web6_internal

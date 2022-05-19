@@ -1,0 +1,1 @@
+CTF{jinja_1s_qu1t3_vuln3rabl3}

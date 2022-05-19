@@ -1,0 +1,8 @@
+.gitsecret/keys/random_seed
+!*.secret
+# CTFd/.env
+# web_1/.env
+.env
+venv/
+__pycache__/
+.DS_Store

@@ -1,0 +1,23 @@
+version: "3"
+
+services:
+  web:
+    image: web3:php5
+    networks:
+      - default
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - RAW_FLAG=${RAW_FLAG}
+
+    container_name: web_3
+    volumes:
+      - ./src:/var/www/html:ro
+    # ports:
+    #   - "8003:80"
+
+networks:
+  default:
+    external:
+      name: web3_internal
